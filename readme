@@ -1,26 +1,18 @@
 
 sudo docker logs -f market_tracer_app
 
-Inbound Rules
-Type: HTTP  
-Protocol: TCP
-Port: 80
-Source: 0.0.0.0/0 (Anywhere-IPv4)  
-Description: Permit web requests  
-
-Type: HTTPS  
-Protocol: TCP
-Port: 443
-Source: 0.0.0.0/0 (Anywhere-IPv4)  
-Description: Permit web requests  
-
-Type: SSH  
-Protocol: TCP
-Port: 22
-Source: 0.0.0.0/0 (Anywhere-IPv4)  
-Description: Permit web requests  
-
-Outbound Rules
-Type: All traffic (Default AWS Security Group rule)
-Protocol: AllPort 
-Range: AllDestination: 0.0.0.0/0 (Anywhere-IPv4)
+1. Open AWS Academy Learner Lab $\rightarrow$ AWS Console $\rightarrow$ EC2.
+2. Click Launch Instance with these configuration parameters:
+   * Name: `Market-Tracker-EC2`
+   * AMI: Amazon Linux 2023 AMI
+   * Instance Type: `t2.micro`
+   * Key Pair: Select `vockey` or `labsuser`
+   * Network Settings: Select the Default VPC and Default Public Subnet.
+   * Auto-assign Public IP: Enable.
+   * Inbound Security Group Rules:
+     * Allow `SSH` (Port 22) from `0.0.0.0/0`
+     * Allow `Custom TCP` (Port 8501) from `0.0.0.0/0`
+   * Outbound Security Group Rules:
+     * Allow `HTTP` (Port 80) from `0.0.0.0/0`
+     * Allow `HTTPS` (Port 443) from `0.0.0.0/0` 
+3. Click Launch Instance. Copy the allocated Public IPv4 address.
