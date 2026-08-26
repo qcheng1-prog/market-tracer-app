@@ -1,2 +1,26 @@
 
 sudo docker logs -f market_tracer_app
+
+Inbound Rules
+Type: HTTP  
+Protocol: TCP
+Port: 80
+Source: 0.0.0.0/0 (Anywhere-IPv4)  
+Description: Permit web requests  
+
+Type: HTTPS  
+Protocol: TCP
+Port: 443
+Source: 0.0.0.0/0 (Anywhere-IPv4)  
+Description: Permit web requests  
+
+Type: SSH  
+Protocol: TCP
+Port: 22
+Source: 0.0.0.0/0 (Anywhere-IPv4)  
+Description: Permit web requests  
+
+Outbound Rules
+Type: All traffic (Default AWS Security Group rule)
+Protocol: AllPort 
+Range: AllDestination: 0.0.0.0/0 (Anywhere-IPv4)
